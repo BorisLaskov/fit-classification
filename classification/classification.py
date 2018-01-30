@@ -20,17 +20,15 @@ class Classification:
         self.client_id = client_id
         self.client_secret = client_secret
 
-        self.reinit_session(client_id, client_secret, callback_host,
-                            callback_port, force_new_token)
+        self.reinit_session(callback_host, callback_port, force_new_token)
 
-    def reinit_session(self, client_id, client_secret,
-                       callback_host, callback_port,
-                       force_new_token):
+    def reinit_session(self, callback_host='localhost', callback_port=8080,
+                       force_new_token=False):
 
         if not force_new_token:
             try:
-                self.session = get_session_from_token(client_id,
-                                                      client_secret,
+                self.session = get_session_from_token(self.client_id,
+                                                      self.client_secret,
                                                       callback_host,
                                                       callback_port,
                                                       self.TOKEN_URL)
@@ -40,7 +38,7 @@ class Classification:
 
         if self.session is None:
 
-            self.session = get_new_session(client_id, client_secret,
+            self.session = get_new_session(self.client_id, self.client_secret,
                                            callback_host, callback_port,
                                            self.AUTHORIZE_URL,
                                            self.TOKEN_URL)
