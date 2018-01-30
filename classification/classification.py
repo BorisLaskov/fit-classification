@@ -43,11 +43,6 @@ class Classification:
                                            callback_host, callback_port,
                                            self.AUTHORIZE_URL,
                                            self.TOKEN_URL)
-            # self.session.refresh_token(self.TOKEN_URL,
-            #                            refresh_token=self.session.token['refresh_token'],
-            #                            auth=HTTPBasicAuth(self.client_id, self.client_secret))
-            # self.session.post()
-            # self.session.put()
 
     def drop_session(self):
         self.session.close()
