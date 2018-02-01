@@ -1,26 +1,30 @@
 import json
-import os.path
+import os
 from http import server
 from oauthlib.oauth2 import WebApplicationClient
 from requests_oauthlib import OAuth2Session
 import webbrowser
 from .exceptions import SavedTokenError, AuthError
 from urllib.parse import urlparse, parse_qs
+from appdirs import user_config_dir
 
 
-TOKEN_FILE_NAME = 'saved_token'
+TOKEN_FILE_PATH = os.path.join(
+    user_config_dir('fit_classification'),
+    'saved_token'
+)
 
 
 def get_session_from_token(client_id, client_secret,
                            callback_host, callback_port,
                            token_url):
-    if not os.path.isfile(TOKEN_FILE_NAME):
+    if not os.path.isfile(TOKEN_FILE_PATH):
         raise SavedTokenError('File does not exist')
 
     token = None
 
     try:
-        with open(TOKEN_FILE_NAME, 'r') as f:
+        with open(TOKEN_FILE_PATH, 'r') as f:
             token = json.load(f)
 
     except Exception as e:
@@ -43,7 +47,8 @@ def get_session_from_token(client_id, client_secret,
 
 
 def save_token(token):
-    with open(TOKEN_FILE_NAME, 'w') as f:
+    os.makedirs(os.path.dirname(TOKEN_FILE_PATH), exist_ok=True)
+    with open(TOKEN_FILE_PATH, 'w') as f:
         json.dump(token, f)
 
 
