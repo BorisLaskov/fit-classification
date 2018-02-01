@@ -18,7 +18,7 @@ setup(
     # package_data={...},
     zip_safe=False,
     install_requires=['requests>=2.18.4', 'requests-oauthlib>=0.8.0',
-                      'appdirs>=1.4.3'],
+                      'appdirs>=1.4.3', 'dataclasses>=0.4'],
     # setup_requires=['pytest-runner'],
     # tests_require=['pytest', 'betamax', 'flexmock', 'pytest-ordering'],
     # classifiers=[

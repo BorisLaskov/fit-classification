@@ -1,11 +1,17 @@
 def remove_none_entries(dictionary):
-    keys = [k for k in dictionary]
+    keys = [k for k in dictionary if dictionary[k] is None]
     for k in keys:
         del dictionary[k]
 
 
-def get_body_or_empty_dict(object):
-    return object.body if object is not None else dict()
+def make_dict_body(object):
+    if object is None:
+        return dict()
+
+    if hasattr(object, 'to_dict'):
+        return object.to_dict()
+
+    return object
 
 
 def get_body_or_raise_error(resp, exp_code):

@@ -1,6 +1,6 @@
 from classification.sessionutils import get_session_from_token, \
     SavedTokenError, get_new_session, save_token
-from classification.utils import get_body_or_empty_dict, \
+from classification.utils import make_dict_body, \
     get_body_or_raise_error
 from oauthlib.oauth2 import TokenExpiredError
 from requests.auth import HTTPBasicAuth
@@ -100,7 +100,8 @@ class Classification:
     @refresh_token
     def save_classification(self, course_code, classification_dto=None,
                             **kwargs):
-        body = get_body_or_empty_dict(classification_dto)
+
+        body = make_dict_body(classification_dto)
 
         resp = self.session.post(f'{self.API_URL}/public'
                                  f'/courses/{course_code}'
@@ -193,7 +194,8 @@ class Classification:
     # -----------------------------------------------
     @refresh_token
     def evaluate_all(self, expressions_dto=None, **kwargs):
-        body = get_body_or_empty_dict(expressions_dto)
+
+        body = make_dict_body(expressions_dto)
 
         resp = self.session.post(f'{self.API_URL}/public'
                                  f'/course-expressions/analyses',
@@ -203,7 +205,8 @@ class Classification:
 
     @refresh_token
     def try_validity(self, expression=None, **kwargs):
-        body = get_body_or_empty_dict(expression)
+
+        body = make_dict_body(expression)
 
         resp = self.session.post(f'{self.API_URL}/public'
                                  f'/expressions/analyses',
@@ -299,7 +302,8 @@ class Classification:
 
     @refresh_token
     def save_student_course_settings(self, user_settings_dto=None, **kwargs):
-        body = get_body_or_empty_dict(user_settings_dto)
+
+        body = make_dict_body(user_settings_dto)
 
         resp = self.session.put(f'{self.API_URL}/public'
                                 f'/settings/my', json=body, **kwargs)
@@ -311,7 +315,8 @@ class Classification:
                                      semester=None, **kwargs):
 
         params = {'semester': semester}
-        body = get_body_or_empty_dict(user_course_settings_dto)
+
+        body = make_dict_body(user_course_settings_dto)
 
         resp = self.session.put(f'{self.API_URL}/public'
                                 f'/settings/my/student/courses',
@@ -324,7 +329,8 @@ class Classification:
                                      semester=None, **kwargs):
 
         params = {'semester': semester}
-        body = get_body_or_empty_dict(user_course_settings_dto)
+
+        body = make_dict_body(user_course_settings_dto)
 
         resp = self.session.put(f'{self.API_URL}/public'
                                 f'/settings/my/teacher/courses',
