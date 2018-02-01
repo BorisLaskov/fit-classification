@@ -95,7 +95,7 @@ class Classification:
         return self.session.post(f'{self.API_URL}/public'
                                  f'/courses/{course_code}'
                                  f'/classifications',
-                                 data=body, **kwargs)
+                                 json=body, **kwargs)
 
     @refresh_token
     def change_order_of_classifications(self, course_code, indexes,
@@ -104,7 +104,7 @@ class Classification:
         return self.session.put(f'{self.API_URL}/public'
                                 f'/courses/{course_code}'
                                 f'/classifications/order',
-                                params=params, data=indexes,
+                                params=params, json=indexes,
                                 **kwargs)
 
     @refresh_token
@@ -163,14 +163,14 @@ class Classification:
         body = get_body_or_empty_dict(expressions_dto)
         return self.session.post(f'{self.API_URL}/public'
                                  f'/course-expressions/analyses',
-                                 data=body, **kwargs)
+                                 json=body, **kwargs)
 
     @refresh_token
     def try_validity(self, expression=None, **kwargs):
         body = get_body_or_empty_dict(expression)
         return self.session.post(f'{self.API_URL}/public'
                                  f'/expressions/analyses',
-                                 data=body, **kwargs)
+                                 json=body, **kwargs)
 
     @refresh_token
     def get_functions(self, **kwargs):
@@ -235,7 +235,7 @@ class Classification:
     def save_student_course_settings(self, user_settings_dto=None, **kwargs):
         body = get_body_or_empty_dict(user_settings_dto)
         return self.session.put(f'{self.API_URL}/public'
-                                f'/settings/my', data=body, **kwargs)
+                                f'/settings/my', json=body, **kwargs)
 
     @refresh_token
     def save_student_course_settings(self, user_course_settings_dto=None,
@@ -244,7 +244,7 @@ class Classification:
         body = get_body_or_empty_dict(user_course_settings_dto)
         return self.session.put(f'{self.API_URL}/public'
                                 f'/settings/my/student/courses',
-                                params=params, data=body, **kwargs)
+                                params=params, json=body, **kwargs)
 
     @refresh_token
     def save_teacher_course_settings(self, user_course_settings_dto=None,
@@ -253,7 +253,7 @@ class Classification:
         body = get_body_or_empty_dict(user_course_settings_dto)
         return self.session.put(f'{self.API_URL}/public'
                                 f'/settings/my/teacher/courses',
-                                params=params, data=body, **kwargs)
+                                params=params, json=body, **kwargs)
 
     # -----------------------------------------------
     # ------ STUDENT CLASSIFICATION CONTROLLER ------
@@ -293,7 +293,7 @@ class Classification:
         return self.session.put(f'{self.API_URL}/public'
                                 f'/courses/{course_code}'
                                 f'/student-classifications',
-                                params=params, data=body, **kwargs)
+                                params=params, json=body, **kwargs)
 
     @refresh_token
     def find_student_classification(self, course_code, student_username,
