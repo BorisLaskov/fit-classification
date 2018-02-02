@@ -301,7 +301,7 @@ class Classification:
         return get_body_or_raise_error(resp, 200)
 
     @refresh_token
-    def save_student_course_settings(self, user_settings_dto=None, **kwargs):
+    def save_my_settings(self, user_settings_dto=None, **kwargs):
 
         body = make_dict_body(user_settings_dto)
 
