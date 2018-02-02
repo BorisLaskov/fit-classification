@@ -378,9 +378,9 @@ class Classification:
         params = {'semester': semester}
 
         if student_classifications is not None:
-            body = [s.body for s in student_classifications]
+            body = [make_dict_body(s) for s in student_classifications]
         else:
-            body = dict()
+            body = list()
 
         resp = self.session.put(f'{self.API_URL}/public'
                                 f'/courses/{course_code}'
