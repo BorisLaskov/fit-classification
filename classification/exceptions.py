@@ -4,3 +4,7 @@ class SavedTokenError(Exception):
 
 class AuthError(Exception):
     pass
+
+
+class MissingParameterError(Exception):
+    pass
