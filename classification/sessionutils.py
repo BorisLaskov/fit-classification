@@ -24,8 +24,7 @@ def get_session_from_token(client_id, client_secret,
     token = None
 
     try:
-        with open(TOKEN_FILE_PATH, 'r') as f:
-            token = json.load(f)
+        token = load_token()
 
     except Exception as e:
         raise SavedTokenError(f'Error reading token from file: {e}')
@@ -50,6 +49,11 @@ def save_token(token):
     os.makedirs(os.path.dirname(TOKEN_FILE_PATH), exist_ok=True)
     with open(TOKEN_FILE_PATH, 'w') as f:
         json.dump(token, f)
+
+
+def load_token():
+    with open(TOKEN_FILE_PATH, 'r') as f:
+        return json.load(f)
 
 
 def get_new_session(client_id, client_secret,
