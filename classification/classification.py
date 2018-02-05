@@ -2,6 +2,8 @@ from classification.sessionutils import get_session_from_token, \
     SavedTokenError, get_new_session, save_token
 from classification.utils import make_dict_body, \
     get_body_or_raise_error
+from classification.payloadconverters \
+    import save_request_from_s2t, save_request_from_t2s
 from oauthlib.oauth2 import TokenExpiredError
 from requests.auth import HTTPBasicAuth
 
@@ -393,6 +395,20 @@ class Classification:
                                 params=params, json=body, **kwargs)
 
         return get_body_or_raise_error(resp, 201)
+
+    def save_student_classifications_simple_s2t(self, course_code,
+                                                student_to_tasks=None,
+                                                semester=None, **kwargs):
+        dtos = save_request_from_s2t(student_to_tasks)
+        return self.save_student_classifications(course_code, dtos,
+                                                 semester, **kwargs)
+
+    def save_student_classifications_simple_t2s(self, course_code,
+                                                task_to_students=None,
+                                                semester=None, **kwargs):
+        dtos = save_request_from_t2s(task_to_students)
+        return self.save_student_classifications(course_code, dtos,
+                                                 semester, **kwargs)
 
     @refresh_token
     def find_student_classification(self, course_code, student_username,

@@ -254,6 +254,30 @@ class ClassificationParamsProxy:
                                           student_classifications,
                                           semester, **kwargs)
 
+    def save_student_classifications_simple_s2t(self, course_code=None,
+                                                student_to_tasks=None,
+                                                semester=None, **kwargs):
+
+        course_code = self._get_param(course_code, 'course_code', True)
+        semester = self._get_param(semester, 'semester', False)
+
+        return self.classification \
+            .save_student_classifications_simple_s2t(course_code,
+                                                     student_to_tasks,
+                                                     semester, **kwargs)
+
+    def save_student_classifications_simple_t2s(self, course_code=None,
+                                                task_to_students=None,
+                                                semester=None, **kwargs):
+
+        course_code = self._get_param(course_code, 'course_code', True)
+        semester = self._get_param(semester, 'semester', False)
+
+        return self.classification \
+            .save_student_classifications_simple_t2s(course_code,
+                                                     task_to_students,
+                                                     semester, **kwargs)
+
     def find_student_classification(self, student_username, course_code=None,
                                     semester=None, lang=None, **kwargs):
 
