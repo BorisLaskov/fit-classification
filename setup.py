@@ -20,7 +20,7 @@ setup(
     install_requires=['requests>=2.18.4', 'requests-oauthlib>=0.8.0',
                       'appdirs>=1.4.3', 'dataclasses>=0.4'],
     setup_requires=['pytest-runner>=3.0'],
-    tests_require=['pytest>=3.4.0', 'flexmock>=0.10.2'],
+    tests_require=['pytest>=3.4.0', 'flexmock>=0.10.2', 'betamax>=0.8.0'],
     # classifiers=[
     #     ...
     #     ]

@@ -16,13 +16,18 @@ class Classification:
 
     def __init__(self, client_id, client_secret,
                  callback_host='localhost', callback_port=8080,
-                 force_new_token=False):
+                 force_new_token=False, session=None):
 
         self.session = None
         self.client_id = client_id
         self.client_secret = client_secret
 
-        self.reinit_session(callback_host, callback_port, force_new_token)
+        # Note that session injection is used primarily for testing purposes
+        # You will still need client_id and _secret values for token refresh
+        if session is None:
+            self.reinit_session(callback_host, callback_port, force_new_token)
+        else:
+            self.session = session
 
     def reinit_session(self, callback_host='localhost', callback_port=8080,
                        force_new_token=False):

@@ -8,13 +8,13 @@ class ClassificationParamsProxy:
 
     def __init__(self, client_id, client_secret,
                  callback_host='localhost', callback_port=8080,
-                 force_new_token=False, course_code=None,
-                 semester=None, group_code=None,
-                 lang=None):
+                 force_new_token=False, session=None,
+                 course_code=None, semester=None,
+                 group_code=None, lang=None):
 
         self.classification = Classification(client_id, client_secret,
                                              callback_host, callback_port,
-                                             force_new_token)
+                                             force_new_token, session)
         self.course_code = course_code
         self.semester = semester
         self.group_code = group_code
