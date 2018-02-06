@@ -3,6 +3,45 @@ from classification.exceptions import MissingParameterError
 
 
 class ClassificationParamsProxy:
+    """This proxy class can store some parameters for API calls.
+
+    You can pass parameters listed below either during the creation
+    of this object or later via directly setting its attributes.
+    Later you can omit them in methods calls. Or supply them anyway
+    to override saved defaults.
+
+    Note:
+        This proxy can do everything that
+        :py:class:`~.classification.Classification` class can.
+        See its documentation for all the parameters. Here we describe
+        only attributes not present in the default implementation.
+
+    Warning:
+        Please note, that due to the fact that some parameters
+        can be stored internally, they default to ``None`` now.
+        However, they can still be needed to make API calls.
+        are not compulsory in method calls. Keep in mind that:
+
+        - If a required parameter is neither saved in proxy
+          nor passed to a method explicitly,
+          a :py:exc:`~classification.exceptions.MissingParameterError`
+          will be raised.
+        - The order of arguments in methods of the plain client
+          and its proxy version can be different.
+          If you prefer to do without named arguments in Python,
+          be sure to double check what you are
+          passing to a method.
+
+
+    Attributes:
+        classification (str): The implementation of the real library,
+            created automatically.
+        course_code (str): Stores the code of the course.
+        semester (str): Stores the semester identifier.
+        group_code (str): Stores the code of the group.
+        lang (str): Stores the language tag.
+
+    """
 
     PARAM_ERROR = 'The following parameter must be supplied: '
 

@@ -5,11 +5,13 @@ from typing import List, Dict, Any, TypeVar
 
 @dataclass
 class ClassificationTextDto:
+    """A helper class for making a request body."""
 
     identifier: str = None
     name: str = None
 
     def to_dict(self):
+        """Called internally to generate a dict body for request."""
 
         body = dict()
 
@@ -30,6 +32,7 @@ ClassificationTextDtoType = TypeVar(
 
 @dataclass
 class ClassificationDto:
+    """A helper class for making a request body."""
 
     calculated: bool = None
     classification_text_dtos: List[ClassificationTextDtoType] = None
@@ -48,6 +51,7 @@ class ClassificationDto:
     value_type: str = None
 
     def to_dict(self):
+        """Called internally to generate a dict body for request."""
 
         body = dict()
 
@@ -80,11 +84,13 @@ class ClassificationDto:
 
 @dataclass
 class ExpressionParseAllRequestDto:
+    """A helper class for making a request body."""
 
     expressions: Any = None
     variable_value_types: Any = None
 
     def to_dict(self):
+        """Called internally to generate a dict body for request."""
 
         body = dict()
 
@@ -98,12 +104,14 @@ class ExpressionParseAllRequestDto:
 
 @dataclass
 class ExpressionParseRequestDto:
+    """A helper class for making a request body."""
 
     expected_result_type: str = None
     expression: str = None
     variable_value_types: str = None
 
     def to_dict(self):
+        """Called internally to generate a dict body for request."""
 
         body = dict()
 
@@ -118,10 +126,12 @@ class ExpressionParseRequestDto:
 
 @dataclass
 class UserSettingsDto:
+    """A helper class for making a request body."""
 
     unsubscribe_emails: bool = None
 
     def to_dict(self):
+        """Called internally to generate a dict body for request."""
 
         body = dict()
 
@@ -134,12 +144,14 @@ class UserSettingsDto:
 
 @dataclass
 class UserCourseSettingsDto:
+    """A helper class for making a request body."""
 
     course_code: str = None
     hidden: bool = None
     silenced_notifications: bool = None
 
     def to_dict(self):
+        """Called internally to generate a dict body for request."""
 
         body = dict()
 
@@ -154,6 +166,7 @@ class UserCourseSettingsDto:
 
 @dataclass
 class StudentClassificationPreviewDto:
+    """A helper class for making a request body."""
 
     classification_identifier: str = None
     id: int = None
@@ -162,6 +175,7 @@ class StudentClassificationPreviewDto:
     value: Any = None
 
     def to_dict(self):
+        """Called internally to generate a dict body for request."""
 
         body = dict()
 
