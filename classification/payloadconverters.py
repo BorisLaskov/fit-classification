@@ -25,3 +25,27 @@ def save_request_from_t2s(task_to_students):
             )
             result.append(elem)
     return result
+
+
+def s2t_from_get_response(resp_body):
+    result = dict()
+    for record in resp_body:
+        username = record['username']
+        grades = record['classificationMap']
+        result_for_student = dict()
+        for task, grade in grades.items():
+            result_for_student[task] = grade
+        result[username] = result_for_student
+    return result
+
+
+def t2s_from_get_response(resp_body):
+    result = dict()
+    for record in resp_body:
+        username = record['username']
+        grades = record['classificationMap']
+        for task, grade in grades.items():
+            if task not in result:
+                result[task] = dict()
+            result[task][username] = grade
+    return result

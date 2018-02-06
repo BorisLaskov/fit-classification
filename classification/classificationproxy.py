@@ -255,7 +255,7 @@ class ClassificationParamsProxy:
     # ------ STUDENT CLASSIFICATION CONTROLLER ------
     # -----------------------------------------------
     def find_student_group_classifications(self, course_code=None,
-                                           group_code=None,
+                                           group_code='ALL',
                                            semester=None, **kwargs):
 
         course_code = self._get_param(course_code, 'course_code', True)
@@ -266,9 +266,35 @@ class ClassificationParamsProxy:
             .find_student_group_classifications(course_code, group_code,
                                                 semester, **kwargs)
 
+    def find_student_group_classifications_simple_s2t(
+            self, course_code=None, group_code='ALL',
+            semester=None, **kwargs):
+
+        course_code = self._get_param(course_code, 'course_code', True)
+        group_code = self._get_param(group_code, 'group_code', True)
+        semester = self._get_param(semester, 'semester', False)
+
+        return self.classification \
+            .find_student_group_classifications_simple_s2t(
+                course_code, group_code,
+                semester, **kwargs)
+
+    def find_student_group_classifications_simple_t2s(
+            self, course_code, group_code='ALL',
+            semester=None, **kwargs):
+
+        course_code = self._get_param(course_code, 'course_code', True)
+        group_code = self._get_param(group_code, 'group_code', True)
+        semester = self._get_param(semester, 'semester', False)
+
+        return self.classification \
+            .find_student_group_classifications_simple_t2s(
+                course_code, group_code,
+                semester, **kwargs)
+
     def find_student_classifications_for_definitions(self, identifier,
                                                      course_code=None,
-                                                     group_code=None,
+                                                     group_code='ALL',
                                                      semester=None, **kwargs):
 
         course_code = self._get_param(course_code, 'course_code', True)

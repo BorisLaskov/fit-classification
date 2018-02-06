@@ -3,7 +3,8 @@ from classification.sessionutils import get_session_from_token, \
 from classification.utils import make_dict_body, \
     get_body_or_raise_error
 from classification.payloadconverters \
-    import save_request_from_s2t, save_request_from_t2s
+    import save_request_from_s2t, save_request_from_t2s, \
+    s2t_from_get_response, t2s_from_get_response
 from classification.types import DictOrNone, ClassificationDtoType, \
     ParseAllDtoType, ParseDtoType, SettingsDtoType, \
     CourseSettingsDtoType, StudentClassificationDtoType, \
@@ -1053,9 +1054,81 @@ class Classification:
 
         return get_body_or_raise_error(resp, 200)
 
+    def find_student_group_classifications_simple_s2t(
+            self, course_code: str, group_code: str='ALL',
+            semester: str=None, **kwargs) -> DictOrNone:
+        """Find student group classifications with a simplified response.
+
+        See :ref:`simplified_operations` section as well as
+        :py:meth:`~.find_student_group_classifications` method.
+
+        Args:
+            course_code: The code of the course.
+            group_code: The code of the group.
+            semester: Semester identifier.
+            **kwargs: Anything that :py:func:`get` function
+                from `Requests
+                <http://docs.python-requests.org/en/master/>`__
+                library can take except for ``params``.
+
+        Returns:
+            On success, it returns the simplified response body
+            or ``None``, if the body is empty.
+
+        Note:
+            On failure, this method raises standard `Requests errors
+            <http://docs.python-requests.org/en/master/
+            _modules/requests/exceptions/>`__.
+
+        """
+
+        resp_body = self.find_student_group_classifications(
+            course_code, group_code, semester, **kwargs)
+
+        if resp_body is not None:
+            return s2t_from_get_response(resp_body)
+        else:
+            return None
+
+    def find_student_group_classifications_simple_t2s(
+            self, course_code: str, group_code: str='ALL',
+            semester: str=None, **kwargs) -> DictOrNone:
+        """Find student group classifications with a simplified response.
+
+        See :ref:`simplified_operations` section as well as
+        :py:meth:`~.find_student_group_classifications` method.
+
+        Args:
+            course_code: The code of the course.
+            group_code: The code of the group.
+            semester: Semester identifier.
+            **kwargs: Anything that :py:func:`get` function
+                from `Requests
+                <http://docs.python-requests.org/en/master/>`__
+                library can take except for ``params``.
+
+        Returns:
+            On success, it returns the simplified response body
+            or ``None``, if the body is empty.
+
+        Note:
+            On failure, this method raises standard `Requests errors
+            <http://docs.python-requests.org/en/master/
+            _modules/requests/exceptions/>`__.
+
+        """
+
+        resp_body = self.find_student_group_classifications(
+            course_code, group_code, semester, **kwargs)
+
+        if resp_body is not None:
+            return t2s_from_get_response(resp_body)
+        else:
+            return None
+
     @refresh_token
     def find_student_classifications_for_definitions(
-            self, course_code: str, identifier: str, group_code: str,
+            self, course_code: str, identifier: str, group_code: str='ALL',
             semester: str=None, **kwargs) -> DictOrNone:
         """Find student classification for definitions.
 
@@ -1148,8 +1221,7 @@ class Classification:
         """A simplified solution to save students' classifications.
 
         See :ref:`simplified_operations` section as well as
-        :py:meth:`.classification.Classification
-        .save_student_classifications` method.
+        :py:meth:`~.save_student_classifications` method.
 
         Args:
             course_code: The code of the course.
@@ -1184,8 +1256,7 @@ class Classification:
         """A simplified solution to save students' classifications.
 
         See :ref:`simplified_operations` section as well as
-        :py:meth:`.classification.Classification
-        .save_student_classifications` method.
+        :py:meth:`~.save_student_classifications` method.
 
         Args:
             course_code: The code of the course.
