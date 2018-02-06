@@ -5,7 +5,7 @@ from classification.utils import make_dict_body, \
 from classification.payloadconverters \
     import save_request_from_s2t, save_request_from_t2s, \
     s2t_from_get_response, t2s_from_get_response
-from classification.types import DictOrNone, ClassificationDtoType, \
+from classification.types import RespDict, ClassificationDtoType, \
     ParseAllDtoType, ParseDtoType, SettingsDtoType, \
     CourseSettingsDtoType, StudentClassificationDtoType, \
     StudentsToTasksType, TasksToStudentsType
@@ -182,7 +182,7 @@ class Classification:
     # -----------------------------------------------
     @refresh_token
     def delete_classification(self, course_code: str, classification_id: str,
-                              semester: str=None, **kwargs) -> DictOrNone:
+                              semester: str=None, **kwargs) -> RespDict:
         """Deletes classification.
 
         See `Classification portal API documentation
@@ -222,7 +222,7 @@ class Classification:
     @refresh_token
     def find_classifications_for_course(self, course_code: str,
                                         semester: str=None, lang: str=None,
-                                        **kwargs) -> DictOrNone:
+                                        **kwargs) -> RespDict:
         """Finds classification for the given course.
 
         See `Classification portal API documentation
@@ -261,7 +261,7 @@ class Classification:
     @refresh_token
     def save_classification(self, course_code: str,
                             classification_dto: ClassificationDtoType=None,
-                            **kwargs) -> DictOrNone:
+                            **kwargs) -> RespDict:
         """Saves classification for the given course.
 
         See `Classification portal API documentation
@@ -301,7 +301,7 @@ class Classification:
     @refresh_token
     def change_order_of_classifications(self, course_code: str, indexes: dict,
                                         semester: str=None,
-                                        **kwargs) -> DictOrNone:
+                                        **kwargs) -> RespDict:
         """Changes the order of classifications.
 
         See `Classification portal API documentation
@@ -342,7 +342,7 @@ class Classification:
     @refresh_token
     def find_classification(self, course_code: str, identifier: str,
                             semester: str=None,
-                            lang: str=None, **kwargs) -> DictOrNone:
+                            lang: str=None, **kwargs) -> RespDict:
         """Finds classification by identifier.
 
         See `Classification portal API documentation
@@ -385,7 +385,7 @@ class Classification:
                                          source_semester: str,
                                          source_course_code: str,
                                          remove_existing: bool,
-                                         **kwargs) -> DictOrNone:
+                                         **kwargs) -> RespDict:
         """Clones the definitions of the classification.
 
         See `Classification portal API documentation
@@ -430,7 +430,7 @@ class Classification:
     # -------------- EDITOR CONTROLLER --------------
     # -----------------------------------------------
     @refresh_token
-    def get_editors(self, course_code: str, **kwargs) -> DictOrNone:
+    def get_editors(self, course_code: str, **kwargs) -> RespDict:
         """Get editors.
 
         See `Classification portal API documentation
@@ -463,7 +463,7 @@ class Classification:
 
     @refresh_token
     def delete_editor(self, course_code: str, username: str,
-                      **kwargs) -> DictOrNone:
+                      **kwargs) -> RespDict:
         """Delete given editor.
 
         See `Classification portal API documentation
@@ -498,7 +498,7 @@ class Classification:
 
     @refresh_token
     def add_editor(self, course_code: str, username: str,
-                   **kwargs) -> DictOrNone:
+                   **kwargs) -> RespDict:
         """Add a new editor.
 
         See `Classification portal API documentation
@@ -535,7 +535,7 @@ class Classification:
     # -----------------------------------------------
     @refresh_token
     def evaluate_all(self, expressions_dto: ParseAllDtoType=None,
-                     **kwargs) -> DictOrNone:
+                     **kwargs) -> RespDict:
         """Evaluate all expressions.
 
         See `Classification portal API documentation
@@ -572,7 +572,7 @@ class Classification:
 
     @refresh_token
     def try_validity(self, expression_dto: ParseDtoType=None,
-                     **kwargs) -> DictOrNone:
+                     **kwargs) -> RespDict:
         """Try validity of an expression.
 
         See `Classification portal API documentation
@@ -608,7 +608,7 @@ class Classification:
         return get_body_or_raise_error(resp, 201)
 
     @refresh_token
-    def get_functions(self, **kwargs) -> DictOrNone:
+    def get_functions(self, **kwargs) -> RespDict:
         """Get all functions.
 
         See `Classification portal API documentation
@@ -644,7 +644,7 @@ class Classification:
     @refresh_token
     def get_all_notifications(self, username: str, count: int=None,
                               page: int=None, lang: str=None,
-                              **kwargs) -> DictOrNone:
+                              **kwargs) -> RespDict:
         """Get all notifications.
 
         See `Classification portal API documentation
@@ -683,7 +683,7 @@ class Classification:
     @refresh_token
     def get_unread_notifications(self, username: str, count: int=None,
                                  page: int=None, lang: str=None,
-                                 **kwargs) -> DictOrNone:
+                                 **kwargs) -> RespDict:
         """Get all unread notifications.
 
         See `Classification portal API documentation
@@ -721,7 +721,7 @@ class Classification:
 
     @refresh_token
     def unread_all_notifications(self, username: str,
-                                 **kwargs) -> DictOrNone:
+                                 **kwargs) -> RespDict:
         """Mark all notifications unread.
 
         See `Classification portal API documentation
@@ -754,7 +754,7 @@ class Classification:
 
     @refresh_token
     def read_all_notifications(self, username: str,
-                               **kwargs) -> DictOrNone:
+                               **kwargs) -> RespDict:
         """Mark all notifications read.
 
         See `Classification portal API documentation
@@ -787,7 +787,7 @@ class Classification:
 
     @refresh_token
     def unread_notification(self, username: str, id: int,
-                            **kwargs) -> DictOrNone:
+                            **kwargs) -> RespDict:
         """Mark a single notification as unread.
 
         See `Classification portal API documentation
@@ -821,7 +821,7 @@ class Classification:
 
     @refresh_token
     def read_notification(self, username: str, id: int,
-                          **kwargs) -> DictOrNone:
+                          **kwargs) -> RespDict:
         """Mark a single notification as read.
 
         See `Classification portal API documentation
@@ -858,7 +858,7 @@ class Classification:
     # -----------------------------------------------
     @refresh_token
     def get_settings(self, semester: str=None, lang: str=None,
-                     **kwargs) -> DictOrNone:
+                     **kwargs) -> RespDict:
         """Get settings.
 
         See `Classification portal API documentation
@@ -894,7 +894,7 @@ class Classification:
 
     @refresh_token
     def save_my_settings(self, user_settings_dto: SettingsDtoType=None,
-                         **kwargs) -> DictOrNone:
+                         **kwargs) -> RespDict:
         """Save my settings.
 
         See `Classification portal API documentation
@@ -931,7 +931,7 @@ class Classification:
     @refresh_token
     def save_student_course_settings(
             self, user_course_settings_dto: CourseSettingsDtoType=None,
-            semester: str=None, **kwargs) -> DictOrNone:
+            semester: str=None, **kwargs) -> RespDict:
         """Save student course settings.
 
         See `Classification portal API documentation
@@ -1017,7 +1017,7 @@ class Classification:
     def find_student_group_classifications(self, course_code: str,
                                            group_code: str='ALL',
                                            semester: str=None,
-                                           **kwargs) -> DictOrNone:
+                                           **kwargs) -> RespDict:
         """Find student group classifications.
 
         See `Classification portal API documentation
@@ -1056,7 +1056,7 @@ class Classification:
 
     def find_student_group_classifications_simple_s2t(
             self, course_code: str, group_code: str='ALL',
-            semester: str=None, **kwargs) -> DictOrNone:
+            semester: str=None, **kwargs) -> RespDict:
         """Find student group classifications with a simplified response.
 
         See :ref:`simplified_operations` section as well as
@@ -1092,7 +1092,7 @@ class Classification:
 
     def find_student_group_classifications_simple_t2s(
             self, course_code: str, group_code: str='ALL',
-            semester: str=None, **kwargs) -> DictOrNone:
+            semester: str=None, **kwargs) -> RespDict:
         """Find student group classifications with a simplified response.
 
         See :ref:`simplified_operations` section as well as
@@ -1129,7 +1129,7 @@ class Classification:
     @refresh_token
     def find_student_classifications_for_definitions(
             self, course_code: str, identifier: str, group_code: str='ALL',
-            semester: str=None, **kwargs) -> DictOrNone:
+            semester: str=None, **kwargs) -> RespDict:
         """Find student classification for definitions.
 
         See `Classification portal API documentation
@@ -1171,7 +1171,7 @@ class Classification:
     def save_student_classifications(
             self, course_code: str,
             student_classifications: StudentClassificationDtoType=None,
-            semester: str=None, **kwargs) -> DictOrNone:
+            semester: str=None, **kwargs) -> RespDict:
         """Save student classifications.
 
         See `Classification portal API documentation
@@ -1217,7 +1217,7 @@ class Classification:
     def save_student_classifications_simple_s2t(
             self, course_code: str,
             student_to_tasks: StudentsToTasksType=None,
-            semester: str=None, **kwargs) -> DictOrNone:
+            semester: str=None, **kwargs) -> RespDict:
         """A simplified solution to save students' classifications.
 
         See :ref:`simplified_operations` section as well as
@@ -1252,7 +1252,7 @@ class Classification:
     def save_student_classifications_simple_t2s(
             self, course_code: str,
             task_to_students: TasksToStudentsType=None,
-            semester: str=None, **kwargs) -> DictOrNone:
+            semester: str=None, **kwargs) -> RespDict:
         """A simplified solution to save students' classifications.
 
         See :ref:`simplified_operations` section as well as
@@ -1288,7 +1288,7 @@ class Classification:
     def find_student_classification(self, course_code: str,
                                     student_username: str,
                                     semester: str=None, lang: str=None,
-                                    **kwargs) -> DictOrNone:
+                                    **kwargs) -> RespDict:
         """Find student classifications.
 
         See `Classification portal API documentation
@@ -1332,7 +1332,7 @@ class Classification:
     @refresh_token
     def get_course_groups(self, course_code: str,
                           semester: str=None, lang: str=None,
-                          **kwargs) -> DictOrNone:
+                          **kwargs) -> RespDict:
         """Get course groups.
 
         See `Classification portal API documentation
