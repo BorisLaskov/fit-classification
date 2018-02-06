@@ -86,6 +86,8 @@ request bodies can be tedious. Take a look at the following methods:
 
 - :py:meth:`~classification.classification.Classification.save_student_classifications_simple_s2t`
 - :py:meth:`~classification.classification.Classification.save_student_classifications_simple_t2s`
+- :py:meth:`~classification.classification.Classification.find_student_group_classifications_simple_s2t`
+- :py:meth:`~classification.classification.Classification.find_student_group_classifications_simple_t2s`
 
 They help get/save students' classifications in a simplified manner.
 ``s2t`` stands for the *student to tasks* format:
