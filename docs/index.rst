@@ -18,7 +18,7 @@ For more information please refer to the sections below.
 
    about_project
    key_features
-   installation
+   getting_started
    api_doc
 
 

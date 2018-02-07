@@ -1,5 +1,8 @@
+Getting started
+***************
+
 Installation
-************
+============
 
 You can get a current version of the library via PyPI.
 Install it with the following command:
@@ -26,3 +29,14 @@ you can install it by unpacking it and typing:
 .. code:: bash
 
     python setup.py install
+
+Logging in
+==========
+
+To log in, you will need not only your username and password,
+but also a Client ID and Secret codes. Get them by registering
+a new web application in the
+`AppsManager <https://auth.fit.cvut.cz/manager/>`__.
+As a callback URL, use your host and a free port so that the library
+can instantiate a web server and catch a callback with authorization code
+(for example, type in :code:`http://localhost:8080`).
