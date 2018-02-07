@@ -1,0 +1,4 @@
+include LICENSE
+recursive-include tests *
+recursive-include docs *
+global-exclude *.py[co]
