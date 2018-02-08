@@ -36,7 +36,18 @@ Tests
 
 This package also has tests inside. To run them, use: :code:`python setup.py test`
 
-.. rubric:: Footnotes
+Authors
+=======
+
+The library is created by Boris Laskov (`GitHub profile <https://github.com/145k0v>`__). For the flow of initial logging in, the author used `the code <https://gitlab.fit.cvut.cz/pulcpetr/classification-scripts>`__ authored by Petr Pulc (under MIT license).
+
+License
+=======
+
+This project is licensed under the MIT License — see the `LICENSE <LICENSE>`__ file for details.
+
+Footnotes
+=========
 
 .. [1] `Faculty of Information Technology <https://www.fit.cvut.cz/en>`__,
        Czech Technical University in Prague.
