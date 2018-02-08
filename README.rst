@@ -44,7 +44,7 @@ The library is created by Boris Laskov (`GitHub profile <https://github.com/145k
 License
 =======
 
-This project is licensed under the MIT License — see the `LICENSE <LICENSE>`__ file for details.
+This project is licensed under the MIT License — see the LICENSE file for details.
 
 Footnotes
 =========
