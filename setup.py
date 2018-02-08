@@ -6,7 +6,7 @@ with open('README.rst') as f:
 
 setup(
     name='fit_classification',
-    version='0.1',
+    version='0.1.1',
     description='Access Classification portal API from your Python programs',
     long_description=long_description,
     author='Boris Laskov',
