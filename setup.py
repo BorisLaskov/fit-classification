@@ -13,7 +13,7 @@ setup(
     author_email='laskobor@fit.cvut.cz',
     keywords='CTU FIT,Classification,coursework',
     license='MIT License',
-    url='https://github.com/145k0v/classification-python',
+    url='https://github.com/145k0v/fit-classification',
     packages=['classification'],
     zip_safe=False,
     install_requires=['requests>=2.18.4', 'requests-oauthlib>=0.8.0',
