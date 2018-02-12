@@ -56,7 +56,7 @@ class ClassificationParamsProxy:
                                              force_new_token, session)
         self.course_code = course_code
         self.semester = semester
-        self.group_code = group_code
+        self.group_code = group_code or 'ALL'
         self.lang = lang
 
     def reinit_session(self, callback_host='localhost', callback_port=8080,
@@ -255,7 +255,7 @@ class ClassificationParamsProxy:
     # ------ STUDENT CLASSIFICATION CONTROLLER ------
     # -----------------------------------------------
     def find_student_group_classifications(self, course_code=None,
-                                           group_code='ALL',
+                                           group_code=None,
                                            semester=None, **kwargs):
 
         course_code = self._get_param(course_code, 'course_code', True)
@@ -267,7 +267,7 @@ class ClassificationParamsProxy:
                                                 semester, **kwargs)
 
     def find_student_group_classifications_simple_s2t(
-            self, course_code=None, group_code='ALL',
+            self, course_code=None, group_code=None,
             semester=None, **kwargs):
 
         course_code = self._get_param(course_code, 'course_code', True)
@@ -280,7 +280,7 @@ class ClassificationParamsProxy:
                 semester, **kwargs)
 
     def find_student_group_classifications_simple_t2s(
-            self, course_code, group_code='ALL',
+            self, course_code, group_code=None,
             semester=None, **kwargs):
 
         course_code = self._get_param(course_code, 'course_code', True)
@@ -294,7 +294,7 @@ class ClassificationParamsProxy:
 
     def find_student_classifications_for_definitions(self, identifier,
                                                      course_code=None,
-                                                     group_code='ALL',
+                                                     group_code=None,
                                                      semester=None, **kwargs):
 
         course_code = self._get_param(course_code, 'course_code', True)
